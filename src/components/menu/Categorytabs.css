@@ -14,6 +14,7 @@
   font-size: 0.95rem;
   cursor: pointer;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -33,25 +34,28 @@
   outline-offset: 3px;
 }
 
-/* Phones: one scrollable row instead of wrapping */
+/*
+  Phones: a neat 2 x 2 grid. No sideways scrolling, so nothing can be dragged
+  or make the page wobble. (The old scrolling row used negative margins, which
+  made the page slightly wider than the screen.)
+*/
 @media (max-width: 640px) {
   .menu-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.6rem;
-    padding: 0.25rem 0.25rem 0.6rem;
-    margin: 0 -0.25rem;
-    scrollbar-width: none;
-  }
-
-  .menu-tabs::-webkit-scrollbar {
-    display: none;
   }
 
   .menu-tabs__btn {
-    flex-shrink: 0;
-    padding: 0.6rem 1.2rem;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
     font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* hover lift sticks on touch screens, so turn it off there */
+  .menu-tabs__btn:hover {
+    transform: none;
   }
 }
 

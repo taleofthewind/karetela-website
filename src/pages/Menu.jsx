@@ -56,9 +56,14 @@ export default function Menu() {
   const requested = params.get("category");
   const category = menuTabs.some((t) => t.id === requested) ? requested : "all";
 
-  const items =
-    category === "all" ? menuItems : menuItems.filter((i) => i.category === category);
-  const showCustomCard = category === "all" || category === "custom";
+  /*
+    Group the items by category. "All Items" shows every group, each under its own
+    divider (Fresh Pastries, Fresh Breads, Custom Cakes). A filter shows just one.
+  */
+  const sections = menuTabs
+    .filter((t) => t.id !== "all" && (category === "all" || t.id === category))
+    .map((t) => ({ ...t, items: menuItems.filter((i) => i.category === t.id) }))
+    .filter((s) => s.items.length > 0 || s.id === "custom");
 
   const handleSelect = (id) => setParams(id === "all" ? {} : { category: id });
 
@@ -95,10 +100,28 @@ export default function Menu() {
     { scope: root }
   );
 
-  /* Cards fade up as they scroll into view, again every time the category changes */
+  /* Dividers draw in and cards fade up as they scroll into view (re-runs on every filter) */
   useGSAP(
     () => {
       if (reduceMotion()) return;
+
+      gsap.utils.toArray(".menu-section__head").forEach((head) => {
+        const trigger = { trigger: head, start: "top 92%", once: true };
+        gsap.from(head.querySelector(".menu-section__title"), {
+          x: -16,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: trigger,
+        });
+        gsap.from(head.querySelector(".menu-section__line"), {
+          scaleX: 0,
+          transformOrigin: "left center",
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: trigger,
+        });
+      });
 
       const cards = gsap.utils.toArray(".menu-card");
       if (!cards.length) return;
@@ -141,15 +164,32 @@ export default function Menu() {
 
         <CategoryTabs tabs={menuTabs} active={category} onSelect={handleSelect} />
 
-        {/* key = category, so the cards re-mount and animate in on every filter */}
-        <div className="menu-grid" key={category}>
-          {items.map((item) => (
-            <MenuCard key={item.id} item={item} />
+        {/* key = category, so everything re-mounts and animates in on every filter */}
+        <div className="menu-sections" key={category}>
+          {sections.map((section) => (
+            <section
+              className="menu-section"
+              key={section.id}
+              aria-labelledby={`menu-section-${section.id}`}
+            >
+              <div className="menu-section__head">
+                <h2 className="menu-section__title" id={`menu-section-${section.id}`}>
+                  {section.label}
+                </h2>
+                <span className="menu-section__line" aria-hidden="true" />
+              </div>
+
+              <div className="menu-grid">
+                {section.items.map((item) => (
+                  <MenuCard key={item.id} item={item} />
+                ))}
+                {section.id === "custom" && <Customordercard />}
+              </div>
+            </section>
           ))}
-          {showCustomCard && <Customordercard />}
         </div>
 
-        {items.length === 0 && !showCustomCard && (
+        {sections.length === 0 && (
           <p className="menu-empty">Nothing here yet. Check back soon!</p>
         )}
       </div>

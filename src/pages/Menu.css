@@ -4,6 +4,7 @@
   background: #faf8f2;
   color: #1c1c1c;
   font-family: "Lora", serif; /* the Menu page uses Lora */
+  overflow-x: clip; /* safety net: the page can never wobble sideways */
 }
 
 .menu-page button {
@@ -61,12 +62,43 @@
   pointer-events: none;
 }
 
+/* ---------- Sections with dividers ---------- */
+.menu-sections {
+  margin-top: 2rem;
+}
+
+.menu-section + .menu-section {
+  margin-top: 2.75rem;
+}
+
+.menu-section__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.1rem;
+}
+
+.menu-section__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #8a6d34;
+}
+
+.menu-section__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #cdb98a, rgba(205, 185, 138, 0.25));
+}
+
 /* ---------- Card grid ---------- */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  margin-top: 2rem;
 }
 
 .menu-empty {
@@ -95,6 +127,14 @@
   .menu-banner__leaves {
     right: 1rem;
     opacity: 0.35;
+  }
+
+  .menu-section + .menu-section {
+    margin-top: 2.25rem;
+  }
+
+  .menu-section__title {
+    font-size: 0.85rem;
   }
 
   .menu-grid {
