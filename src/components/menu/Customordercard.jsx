@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { siteInfo } from "@/data/siteinfo";
-import "./MenuCard.css";
+import "./Menucard.css";
 
-export default function CustomOrderCard() {
+export default function Customordercard() {
   return (
     <article className="menu-card menu-card--custom">
       <svg

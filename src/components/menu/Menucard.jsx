@@ -1,6 +1,6 @@
-import "./MenuCard.css";
+import "./Menucard.css";
 
-export default function MenuCard({ item }) {
+export default function Menucard({ item }) {
   return (
     <article className="menu-card">
       <div className="menu-card__media">

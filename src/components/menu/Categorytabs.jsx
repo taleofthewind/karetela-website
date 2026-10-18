@@ -1,6 +1,6 @@
-import "./CategoryTabs.css";
+import "./Categorytabs.css";
 
-export default function CategoryTabs({ tabs, active, onSelect }) {
+export default function Categorytabs({ tabs, active, onSelect }) {
   return (
     <div className="menu-tabs" role="group" aria-label="Filter the menu by category">
       {tabs.map(({ id, label }) => (
