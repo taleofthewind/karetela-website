@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { siteInfo  } from "@/data/siteinfo";
-import "./MapSection.css";
+import "./Mapsection.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
