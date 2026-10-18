@@ -1,0 +1,235 @@
+.menucat {
+  --gold: #d9a441;
+  --gold-bright: #e9b949;
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 1.5rem 4rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, #faf6ee 0%, #f5f0e6 60%, #efe8da 100%);
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+/* ---------- Leaves ---------- */
+.menucat__leaves {
+  position: absolute;
+  top: 1rem;
+  width: clamp(70px, 8vw, 120px);
+  height: auto;
+  color: var(--gold);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.menucat__leaves--left { left: 0; }
+.menucat__leaves--right { right: 0; }
+
+/* ---------- Header ---------- */
+.menucat__head {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.menucat__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c8922a;
+}
+
+.menucat__eyebrow::before,
+.menucat__eyebrow::after {
+  content: "";
+  width: 1.8rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.menucat__title {
+  margin: 0 0 0.6rem;
+  font-family: "Playfair Display", "Lora", serif;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111;
+}
+
+.menucat__lead {
+  margin: 0;
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: #2b2620;
+}
+
+/* ---------- Cards ---------- */
+.menucat__grid {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8rem;
+}
+
+.menucat__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 1.7 / 1;
+  min-height: 250px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #1a1511;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(60, 40, 10, 0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.menucat__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(60, 40, 10, 0.3);
+}
+
+.menucat__card:focus-visible {
+  outline: 3px solid var(--gold-bright);
+  outline-offset: 4px;
+}
+
+/* wrapper takes the hover zoom, the img inside takes the scroll parallax */
+.menucat__media {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s ease;
+}
+
+.menucat__card:hover .menucat__media {
+  transform: scale(1.06);
+}
+
+.menucat__img {
+  position: absolute;
+  left: 0;
+  top: -8%;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* dark band at the bottom for the text */
+.menucat__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 6, 4, 0.97) 0%,
+    rgba(8, 6, 4, 0.9) 28%,
+    rgba(8, 6, 4, 0.35) 55%,
+    transparent 75%
+  );
+}
+
+.menucat__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.menucat__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold-bright);
+}
+
+.menucat__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.menucat__card-title {
+  margin: 0;
+  font-family: "Playfair Display", "Lora", serif;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #f6e2ae;
+}
+
+.menucat__card-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: #ddd3c2;
+}
+
+.menucat__go {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--gold-bright);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.menucat__card:hover .menucat__go,
+.menucat__card:focus-visible .menucat__go {
+  background: #f6efe0;
+  border-color: #f6efe0;
+  color: #1a1208;
+  transform: translateX(3px);
+}
+
+/* ---------- Tablet / phone ---------- */
+@media (max-width: 1000px) {
+  .menucat__leaves {
+    display: none;
+  }
+
+  .menucat__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* the 3rd card spans the full row so the grid doesn't look lopsided */
+  .menucat__card:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 3.4 / 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .menucat {
+    padding: 2.75rem 1rem 3rem;
+  }
+
+  .menucat__grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .menucat__card,
+  .menucat__card:last-child {
+    grid-column: auto;
+    aspect-ratio: 1.6 / 1;
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menucat__card,
+  .menucat__media,
+  .menucat__go {
+    transition: none;
+  }
+}

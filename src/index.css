@@ -1,0 +1,5 @@
+:root {
+  --cream: #f5f0e6;  /* same cream as the testimonials header */
+}
+@import "tailwindcss";
+

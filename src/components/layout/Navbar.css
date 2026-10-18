@@ -1,0 +1,248 @@
+.navbar {
+  --gold: #e9b949;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #0b0907;
+  color: #f4efe6;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+.navbar__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ---------- Brand (left) ---------- */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar__logo {
+  height: clamp(46px, 5vw, 60px);
+  width: auto;
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar__brand-name {
+  font-family: "Playfair Display", "Lora", serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #f0d38a;
+}
+
+.navbar__brand-sub {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #d9c593;
+}
+
+/* On desktop the panel disappears so links + actions sit in the grid columns */
+.navbar__panel {
+  display: contents;
+}
+
+/* ---------- Links (center) ---------- */
+.navbar__links {
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__link {
+  position: relative;
+  display: inline-block;
+  padding: 0.35rem 0;
+  color: #f4efe6;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.navbar__link:hover,
+.navbar__link.is-active {
+  color: var(--gold);
+}
+
+.navbar__link:hover::after,
+.navbar__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Socials + button (right) ---------- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 1.5rem;
+}
+
+.navbar__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.navbar__social {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #f4efe6;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar__social:hover {
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.navbar__cta svg {
+  transition: transform 0.25s ease;
+}
+
+.navbar__cta:hover {
+  background: var(--gold);
+  color: #1a1208;
+}
+
+.navbar__cta:hover svg {
+  transform: translateX(4px);
+}
+
+.navbar__brand:focus-visible,
+.navbar__link:focus-visible,
+.navbar__social:focus-visible,
+.navbar__cta:focus-visible,
+.navbar__toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ---------- Burger (hidden on desktop) ---------- */
+.navbar__toggle {
+  display: none;
+  padding: 0.25rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Tighten on small laptops ---------- */
+@media (max-width: 1100px) {
+  .navbar__links {
+    gap: 1.6rem;
+  }
+  .navbar__actions {
+    gap: 1rem;
+  }
+}
+
+/* ---------- Tablet + mobile: burger and dropdown ---------- */
+@media (max-width: 960px) {
+  .navbar__inner {
+    grid-template-columns: 1fr auto;
+    padding: 0.7rem 1rem;
+  }
+
+  .navbar__toggle {
+    display: block;
+    justify-self: end;
+  }
+
+  .navbar__panel {
+    display: block;
+    grid-column: 1 / -1;
+    overflow: hidden;
+    max-height: 0;
+    visibility: hidden; /* keeps closed links out of keyboard focus */
+    transition: max-height 0.35s ease, visibility 0s linear 0.35s;
+  }
+
+  .navbar__panel.is-open {
+    max-height: 520px;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .navbar__links {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar__link {
+    display: block;
+    padding: 0.95rem 0;
+    font-size: 1.05rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar__link::after {
+    display: none;
+  }
+
+  .navbar__actions {
+    justify-content: space-between;
+    padding: 1rem 0 1.1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__panel,
+  .navbar__link,
+  .navbar__link::after,
+  .navbar__cta,
+  .navbar__cta svg,
+  .navbar__social {
+    transition: none;
+  }
+}

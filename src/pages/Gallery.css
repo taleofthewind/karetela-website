@@ -1,0 +1,63 @@
+.gallery {
+  font-family: "Lora", serif;
+  background: radial-gradient(ellipse at 50% 0%, #1c150d 0%, #0b0907 62%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.gallery__head {
+  padding: 2.25rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.gallery__emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.gallery__logo {
+  height: clamp(52px, 7vw, 72px);
+  width: auto;
+}
+
+.gallery__line {
+  width: clamp(50px, 14vw, 130px);
+  height: 1px;
+}
+
+.gallery__line--l {
+  background: linear-gradient(90deg, transparent, #e9b949);
+}
+
+.gallery__line--r {
+  background: linear-gradient(270deg, transparent, #e9b949);
+}
+
+.gallery__eyebrow {
+  margin: 0.6rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: #e9b949;
+}
+
+.gallery__title {
+  margin: 0;
+  font-size: clamp(2.6rem, 8vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  color: #e9b949; /* fallback */
+  background: linear-gradient(180deg, #f8dc8a 0%, #d79c2b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gallery__sub {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #f1e7d3;
+}

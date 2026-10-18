@@ -1,0 +1,91 @@
+.features {
+  --gold: #e9b949;
+  background: #0b0907;
+  border-top: 1px solid rgba(233, 185, 73, 0.35);
+  padding: 1.6rem 1.5rem;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+.features__grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.features__cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* gold line between the items */
+.features__divider {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 46px;
+  margin-top: -23px;
+  background: rgba(233, 185, 73, 0.5);
+}
+
+.features__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 1rem;
+}
+
+.features__icon {
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.features__item:hover .features__icon {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.features__title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f4efe6;
+}
+
+.features__text {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: #b9ae98;
+}
+
+/* ---------- Phones: stack the three items ---------- */
+@media (max-width: 760px) {
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .features__cell {
+    justify-content: flex-start;
+    padding-left: 1rem;
+  }
+
+  .features__divider {
+    top: -0.65rem;
+    left: 1rem;
+    width: 60%;
+    height: 1px;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .features__icon {
+    transition: none;
+  }
+}

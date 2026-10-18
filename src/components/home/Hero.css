@@ -1,0 +1,165 @@
+.hero {
+  --gold: #e9b949;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: clamp(460px, 70vh, 660px);
+  border-top: 1px solid rgba(233, 185, 73, 0.85);
+  background: #0b0907;
+  color: #fff;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+/* Taller than the section so the parallax has room to move */
+.hero__bg {
+  position: absolute;
+  left: 0;
+  top: -18%;
+  width: 100%;
+  height: 136%;
+  object-fit: cover;
+  object-position: 70% center;
+  will-change: transform;
+}
+
+/* Dark on the left for the text, the photo shows through on the right */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 6, 4, 0.94) 0%,
+    rgba(8, 6, 4, 0.8) 32%,
+    rgba(8, 6, 4, 0.25) 62%,
+    rgba(8, 6, 4, 0.05) 100%
+  );
+}
+
+/* ---------- Leaves ---------- */
+.hero__leaves {
+  position: absolute;
+  left: 0;
+  width: clamp(80px, 9vw, 130px);
+  height: auto;
+  color: var(--gold);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.hero__leaves--top {
+  top: 0.5rem;
+}
+
+.hero__leaves--bottom {
+  bottom: 0.5rem;
+}
+
+/* ---------- Content ---------- */
+.hero__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+
+.hero__content {
+  max-width: 36rem;
+  will-change: transform;
+}
+
+.hero__eyebrow {
+  margin: 0 0 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: #f1e3c0;
+}
+
+.hero__title {
+  margin: 0 0 1.4rem;
+  font-family: "Playfair Display", "Lora", serif;
+  font-size: clamp(2.5rem, 6vw, 4.3rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+/* Mask so each line rises into view */
+.hero__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.hero__line > span {
+  display: block;
+}
+
+.hero__line--accent {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero__text {
+  max-width: 31rem;
+  margin: 0 0 2rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.75;
+  color: #f1ece2;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0c765, #dba43d);
+  color: #1a1208;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(233, 185, 73, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.hero__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(233, 185, 73, 0.4);
+}
+
+.hero__btn:hover svg {
+  transform: translateX(4px);
+}
+
+.hero__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 768px) {
+  .hero__overlay {
+    background: linear-gradient(180deg, rgba(8, 6, 4, 0.75), rgba(8, 6, 4, 0.88));
+  }
+
+  .hero__leaves {
+    display: none;
+  }
+
+  .hero__inner {
+    padding: 3rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__btn,
+  .hero__btn svg {
+    transition: none;
+  }
+}

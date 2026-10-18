@@ -1,0 +1,109 @@
+.contact {
+  font-family: "Lora", serif;
+  background: #f5f0e6;
+}
+
+.contact__head {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  color: #000;
+}
+
+.contact__badge {
+  height: clamp(40px, 6vw, 60px);
+  width: auto;
+}
+
+.contact__band {
+  position: relative;
+  background: #1c1c1c url("../assets/images/testimonials/bg.jpg") center / cover no-repeat;
+  padding: 3rem 1.5rem;
+}
+
+/* dark tint so the photo doesn't fight the cards */
+.contact__band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.contact__grid {
+  position: relative;   /* keeps the cards above the tint */
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.contact__card {
+  padding: 1.75rem;
+  background: #1c1c1c;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(251, 191, 20, 0.35);
+}
+
+.contact__card svg {
+  color: #fbbf14;
+}
+
+.contact__card h2 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.contact__card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.contact__card p span,
+.contact__card p a {
+  display: block;
+}
+
+.contact__card p a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.15rem 0;
+}
+
+.contact__card p a:hover {
+  color: #fbbf14;
+}
+
+.contact__btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background: #fbbf14;
+  color: #1c1c1c;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact__btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.contact__btn:focus-visible,
+.contact__card a:focus-visible {
+  outline: 2px solid #fbbf14;
+  outline-offset: 3px;
+}

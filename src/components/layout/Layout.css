@@ -1,0 +1,10 @@
+/* Footer sticks to the bottom even on short pages */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout > main {
+  flex: 1;
+}

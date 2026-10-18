@@ -1,0 +1,95 @@
+.carousel {
+  --swiper-theme-color: #fbbf14;
+  --swiper-navigation-size: 22px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #111;
+  font-family: "Lora", serif;
+}
+
+.carousel .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+/* Hover: slow zoom */
+.carousel:hover .swiper-slide-active img {
+  transform: scale(1.07);
+}
+
+/* Hover: caption slides up */
+.carousel__slide figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1.25rem 2.25rem;
+  color: #fff;
+  font-size: 1.05rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover: arrows fade in */
+.carousel .swiper-button-prev,
+.carousel .swiper-button-next {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel:hover .swiper-button-prev,
+.carousel:hover .swiper-button-next {
+  opacity: 1;
+}
+
+/* Phones have no hover: always show the caption, keep arrows hidden (people swipe) */
+@media (hover: none) {
+  .carousel__slide figcaption {
+    opacity: 1;
+    transform: none;
+  }
+  .carousel .swiper-button-prev,
+  .carousel .swiper-button-next {
+    display: none;
+  }
+}
+
+.carousel--empty {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__slide img,
+  .carousel__slide figcaption {
+    transition: none;
+  }
+}
