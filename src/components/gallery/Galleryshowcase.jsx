@@ -16,7 +16,7 @@ import { galleryItems } from "@/data/gallery";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/thumbs";
-import "./GalleryShowcase.css";
+import "./Galleryshowcase.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 

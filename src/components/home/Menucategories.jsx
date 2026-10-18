@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { menuCategories } from "@/data/menuCategories";
-import "./MenuCategories.css";
+import { menuCategories } from "@/data/menucategories";
+import "./Menucategories.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
