@@ -3,7 +3,7 @@ import { Navigation } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { siteInfo  } from "@/data/siteInfo";
+import { siteInfo  } from "@/data/siteinfo";
 import "./MapSection.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);

@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import MapSection from "@/components/contact/MapSection";
-import { siteInfo } from "@/data/siteInfo";
+import { siteInfo } from "@/data/siteinfo";
 import logo from "@/assets/images/cut1.png";
 import "./Contact.css";
 

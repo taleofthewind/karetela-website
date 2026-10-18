@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import logo from "@/assets/images/cut1.png";
-import { siteInfo } from "@/data/siteInfo";
+import { siteInfo } from "@/data/siteinfo";
 import "./Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);

@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { testimonials, testimonialsBg } from "@/data/testimonials";
-import { siteInfo } from "@/data/siteInfo";
+import { siteInfo } from "@/data/siteinfo";
 import "swiper/css";
 import "./Testimonials.css";
 

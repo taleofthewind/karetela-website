@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { siteInfo } from "@/data/siteInfo";
+import { siteInfo } from "@/data/siteinfo";
 import "./MenuCard.css";
 
 export default function CustomOrderCard() {
