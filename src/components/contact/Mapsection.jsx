@@ -8,7 +8,7 @@ import "./Mapsection.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function MapSection() {
+export default function Mapsection() {
   const root = useRef(null);
 
   useGSAP(

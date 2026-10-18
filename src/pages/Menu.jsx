@@ -3,9 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import CategoryTabs from "@/components/menu/CategoryTabs";
-import MenuCard from "@/components/menu/MenuCard";
-import CustomOrderCard from "@/components/menu/CustomOrderCard";
+import CategoryTabs from "@/components/menu/Categorytabs";
+import MenuCard from "@/components/menu/Menucard";
+import Customordercard from "@/components/menu/Customordercard";
 import { menuTabs, menuItems } from "@/data/menu";
 import "./Menu.css";
 
@@ -146,7 +146,7 @@ export default function Menu() {
           {items.map((item) => (
             <MenuCard key={item.id} item={item} />
           ))}
-          {showCustomCard && <CustomOrderCard />}
+          {showCustomCard && <Customordercard />}
         </div>
 
         {items.length === 0 && !showCustomCard && (

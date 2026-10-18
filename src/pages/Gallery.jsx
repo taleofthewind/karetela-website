@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import GalleryShowcase from "@/components/gallery/GalleryShowcase";
+import Galleryshowcase from "@/components/gallery/Galleryshowcase";
 import logo from "@/assets/images/cut1.png";
 import "./Gallery.css";
 
@@ -40,7 +40,7 @@ export default function Gallery() {
         <p className="gallery__sub">Freshly Baked. Lovingly Made.</p>
       </header>
 
-      <GalleryShowcase />
+      <Galleryshowcase />
     </section>
   );
 }

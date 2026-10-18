@@ -50,7 +50,7 @@ const features = [
   { Icon: HeartIcon, title: "Local Bakery", text: "Supporting our community" },
 ];
 
-export default function FeaturesStrip() {
+export default function Featurestrip() {
   const root = useRef(null);
 
   useGSAP(

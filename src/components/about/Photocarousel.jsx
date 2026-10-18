@@ -28,7 +28,7 @@ const slides = Object.entries(modules)
   .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
   .map(([path, src]) => ({ src, caption: toCaption(path) }));
 
-export default function PhotoCarousel() {
+export default function Photocarousel() {
   if (slides.length === 0) {
     return (
       <div className="carousel carousel--empty">

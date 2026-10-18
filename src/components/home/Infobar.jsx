@@ -3,11 +3,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { siteInfo } from "@/data/siteinfo";
-import "./InfoBar.css";
+import "./Infobar.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function InfoBar() {
+export default function Infobar() {
   const root = useRef(null);
 
   useGSAP(

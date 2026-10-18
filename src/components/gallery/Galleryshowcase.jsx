@@ -20,7 +20,7 @@ import "./Galleryshowcase.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function GalleryShowcase() {
+export default function Galleryshowcase() {
   const root = useRef(null);
   const mainRef = useRef(null);
   const [thumbs, setThumbs] = useState(null);

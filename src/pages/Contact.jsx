@@ -3,7 +3,7 @@ import { MapPin, Clock, Phone, ShoppingBag } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import MapSection from "@/components/contact/MapSection";
+import Mapsection from "@/components/contact/Mapsection";
 import { siteInfo } from "@/data/siteinfo";
 import logo from "@/assets/images/cut1.png";
 import "./Contact.css";
@@ -95,7 +95,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <MapSection />
+      <Mapsection />
     </div>
   );
 }

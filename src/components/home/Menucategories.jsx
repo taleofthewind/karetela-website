@@ -87,7 +87,7 @@ function LeafBranch({ side }) {
   );
 }
 
-export default function MenuCategories() {
+export default function Menucategories() {
   const root = useRef(null);
 
   useGSAP(
