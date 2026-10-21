@@ -13,7 +13,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { galleryItems } from "@/data/gallery";
-import DetailCard from "./DetailCard";
+import Detailcard from "./Detailcard";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/thumbs";
@@ -142,7 +142,7 @@ export default function Galleryshowcase() {
           </div>
         </div>
 
-        <DetailCard item={galleryItems[active] ?? galleryItems[0]} open={open} onClose={closeDetails} />
+        <Detailcard item={galleryItems[active] ?? galleryItems[0]} open={open} onClose={closeDetails} />
       </div>
 
       <Swiper

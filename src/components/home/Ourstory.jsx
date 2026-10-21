@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import logo from "@/assets/images/cut.png";
 import { story, storyPhotos } from "@/data/story";
-import "./OurStory.css";
+import "./Ourstory.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -28,7 +28,7 @@ function slotFor(i, active, n) {
   return { k: 2, s: 0.7, b: 0.6, op: 0, z: 0 }; // waiting behind the stack
 }
 
-export default function OurStory() {
+export default function Ourstory() {
   const root = useRef(null);
   const startX = useRef(null);
   const [active, setActive] = useState(0);
