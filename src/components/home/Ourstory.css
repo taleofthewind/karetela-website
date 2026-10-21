@@ -1,0 +1,283 @@
+.story {
+  --gold: #e9b949;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 8vw, 6rem) 1.5rem;
+  border-top: 1px solid rgba(233, 185, 73, 0.18);
+  background: radial-gradient(ellipse at 72% 40%, #18130c 0%, #0b0907 62%, #080605 100%);
+  color: #fff;
+  font-family: "Lora", serif;
+}
+
+.story__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+/* ---------- Text column ---------- */
+.story__brand {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  max-width: 28rem;
+  margin-bottom: 1.1rem;
+}
+
+.story__logo {
+  height: 54px;
+  width: auto;
+}
+
+.story__brand-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(233, 185, 73, 0.75), transparent);
+}
+
+.story__eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.story__title {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.3rem, 5vw, 3.9rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #f3e6cc;
+}
+
+.story__body p {
+  max-width: 28rem;
+  margin: 0 0 1.15rem;
+  font-size: clamp(0.98rem, 1.5vw, 1.05rem);
+  line-height: 1.65;
+  color: #efe7d6;
+}
+
+/* ---------- Signature ---------- */
+.story__sign {
+  margin-top: 2.2rem;
+}
+
+.story__sign-rule {
+  display: block;
+  width: 5.5rem;
+  height: 1px;
+  margin-bottom: 1rem;
+  background: rgba(233, 185, 73, 0.7);
+}
+
+.story__signature {
+  display: inline-block;
+  margin: 0;
+  line-height: 1;
+  transform: rotate(-7deg);
+  transform-origin: left bottom;
+  color: var(--gold);
+}
+
+.story__signature span {
+  display: block;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+}
+
+.story__signature em {
+  display: block;
+  margin: -0.1rem 0 0 1.2rem;
+  font-family: "Playball", "Lora", cursive;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+/* ---------- Photo fan ---------- */
+.story__media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.story__carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.story__carousel:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 8px;
+  border-radius: 12px;
+}
+
+.story__stack {
+  --cw: 62.5%;  /* width of one photo, as a share of the stack */
+  --step: 45%;  /* how far each photo behind sticks out */
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+  touch-action: pan-y; /* vertical scroll still works, horizontal swipes come to us */
+  user-select: none;
+}
+
+.story__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--cw);
+  height: 100%;
+  margin: 0;
+  transform-origin: left center;
+  transform: translateX(calc(var(--k) * var(--step))) scale(var(--s));
+  filter: brightness(var(--b));
+  transition: transform 0.75s cubic-bezier(0.22, 0.8, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
+  will-change: transform, opacity;
+}
+
+/* each photo is tilted a little, like the design */
+.story__face {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(233, 185, 73, 0.75);
+  border-radius: 14px;
+  background: #15110c;
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.55);
+  transform: perspective(1100px) rotateY(-9deg);
+}
+
+.story__face img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ---------- Arrows ---------- */
+.story__arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1.5px solid rgba(233, 185, 73, 0.85);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.story__arrow:hover {
+  background: var(--gold);
+  color: #14100a;
+}
+
+.story__arrow:focus-visible,
+.story__dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ---------- Dots ---------- */
+.story__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+}
+
+/* the button is a roomy tap target, the visible dot is drawn inside it */
+.story__dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.story__dot::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #4a4036;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.story__dot.is-active::before {
+  background: var(--gold);
+  transform: scale(1.15);
+}
+
+.story__empty {
+  margin: 0;
+  padding: 2rem;
+  border: 1px dashed rgba(233, 185, 73, 0.5);
+  border-radius: 14px;
+  text-align: center;
+  color: var(--gold);
+}
+
+/* ---------- Tablet: text on top, photos under it ---------- */
+@media (max-width: 960px) {
+  .story__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .story__body p {
+    max-width: 36rem;
+  }
+
+  .story__stack {
+    max-width: 520px;
+  }
+}
+
+/* ---------- Phones: no arrows, swipe or tap the dots ---------- */
+@media (max-width: 640px) {
+  .story {
+    padding: 3.25rem 1.25rem;
+  }
+
+  .story__arrow {
+    display: none;
+  }
+
+  .story__stack {
+    --cw: 70%;
+    --step: 30%;
+    max-width: none;
+  }
+
+  .story__signature em {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story__card,
+  .story__arrow,
+  .story__dot::before {
+    transition: none;
+  }
+}

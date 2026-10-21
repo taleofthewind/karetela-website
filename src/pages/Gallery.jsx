@@ -37,7 +37,7 @@ export default function Gallery() {
         </div>
         <p className="gallery__eyebrow">OUR</p>
         <h1 className="gallery__title scroll-blur">GALLERY</h1>
-        <p className="gallery__sub">Freshly Baked. Lovingly Made.</p>
+        <p className="gallery__sub">Checkout our bestsellers.</p>
       </header>
 
       <Galleryshowcase />

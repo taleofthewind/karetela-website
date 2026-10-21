@@ -1,16 +1,42 @@
 .gal {
   --gold: #e9b949;
   --gold-soft: rgba(233, 185, 73, 0.55);
+
+  /* shared with the details card */
+  --detail-w: clamp(18rem, 23vw, 23rem);
+  --detail-overlap: 3.5rem;
+  --detail-shift: calc((var(--detail-w) - var(--detail-overlap)) / 2);
+
   font-family: "Lora", serif;
   color: var(--gold);
   padding-bottom: 3.5rem;
 }
 
-/* ---------- Main stage (full width so the side photos bleed to the edges) ---------- */
+/* ---------- Stage (full width so the side photos bleed to the edges) ---------- */
 .gal__stage {
   position: relative;
   overflow: hidden;
   padding: 1.5rem 0;
+}
+
+/* arrows live here, so they stay put when the photos slide aside */
+.gal__frame {
+  position: relative;
+}
+
+.gal__viewport {
+  transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+/* Details card open (wide screens): the photos slide left to make room for the card */
+@media (min-width: 1181px) {
+  .gal--open .gal__viewport {
+    transform: translateX(calc(-1 * var(--detail-shift)));
+  }
+
+  .gal__slide {
+    min-height: 440px;
+  }
 }
 
 .gal__stage .swiper {
@@ -36,6 +62,7 @@
   border: 1px solid var(--gold);
   border-radius: 4px;
   background: #111;
+  box-shadow: 0 0 30px rgba(233, 185, 73, 0.12);
 }
 
 .gal__slide img {
@@ -50,14 +77,35 @@
   transform: scale(1.04);
 }
 
+/* the whole photo is one big button */
+.gal__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gal__slide-wrap:not(.swiper-slide-active) .gal__hit {
+  cursor: grab;
+}
+
+.gal__hit:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -6px;
+}
+
 /* ---------- Caption (hover reveals it on desktop) ---------- */
 .gal__caption {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.35rem;
   padding: 3rem 2rem 1.75rem;
   color: #fff;
@@ -71,6 +119,11 @@
 .gal__slide-wrap.swiper-slide-active:hover .gal__caption {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* the details card already shows the name, so hide the caption while it is open */
+.gal--open .gal__slide-wrap.swiper-slide-active .gal__caption {
+  opacity: 0;
 }
 
 .gal__cat {
@@ -92,30 +145,14 @@
   background: var(--gold);
 }
 
-/* small round arrow on the active photo */
-.gal__go {
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: 42px;
-  height: 42px;
-  display: none;
-  place-items: center;
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
+.gal__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   color: var(--gold);
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.gal__slide-wrap.swiper-slide-active .gal__go {
-  display: grid;
-}
-
-.gal__go:hover {
-  background: var(--gold);
-  color: #111;
 }
 
 /* ---------- Big side arrows ---------- */
@@ -148,8 +185,7 @@
   display: none;
 }
 
-.gal__arrow:focus-visible,
-.gal__go:focus-visible {
+.gal__arrow:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
 }
@@ -229,7 +265,6 @@
   text-align: center;
 }
 
-/* gold lines on both sides of the pill (desktop only) */
 .gal__hint::before,
 .gal__hint::after {
   content: "";
@@ -286,11 +321,6 @@
     padding: 2rem 1.1rem 1.1rem;
   }
 
-  .gal__go {
-    right: 1rem;
-    bottom: 1rem;
-  }
-
   .gal__thumb {
     width: 84px;
     height: 56px;
@@ -309,11 +339,16 @@
     transform: none;
   }
 
+  .gal--open .gal__slide-wrap.swiper-slide-active .gal__caption {
+    opacity: 0;
+  }
+
   .gal__hint-hover { display: none; }
   .gal__hint-touch { display: inline; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .gal__viewport,
   .gal__slide img,
   .gal__caption,
   .gal__slide-wrap,

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -8,11 +8,12 @@ import {
   Autoplay,
   Keyboard,
 } from "swiper/modules";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { galleryItems } from "@/data/gallery";
+import DetailCard from "./DetailCard";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/thumbs";
@@ -23,7 +24,24 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function Galleryshowcase() {
   const root = useRef(null);
   const mainRef = useRef(null);
+  const wasOpen = useRef(false);
   const [thumbs, setThumbs] = useState(null);
+  const [active, setActive] = useState(0); // which photo is in the centre
+  const [open, setOpen] = useState(false); // is the details card showing
+
+  const closeDetails = useCallback(() => setOpen(false), []);
+
+  // Pause the autoplay while the details card is open, so the text doesn't change under you
+  useEffect(() => {
+    const swiper = mainRef.current;
+    if (!swiper?.autoplay) return;
+    if (open) {
+      swiper.autoplay.stop();
+    } else if (wasOpen.current) {
+      swiper.autoplay.start();
+    }
+    wasOpen.current = open;
+  }, [open]);
 
   useGSAP(
     () => {
@@ -61,53 +79,70 @@ export default function Galleryshowcase() {
   const canLoop = galleryItems.length >= 6;
 
   return (
-    <div className="gal" ref={root}>
+    <div className={`gal ${open ? "gal--open" : ""}`} ref={root}>
       <div className="gal__stage">
-        <button className="gal__arrow gal__arrow--prev" aria-label="Previous photo">
-          <ChevronLeft size={30} />
-        </button>
-        <button className="gal__arrow gal__arrow--next" aria-label="Next photo">
-          <ChevronRight size={30} />
-        </button>
+        <div className="gal__frame">
+          <button className="gal__arrow gal__arrow--prev" aria-label="Previous photo">
+            <ChevronLeft size={30} />
+          </button>
+          <button className="gal__arrow gal__arrow--next" aria-label="Next photo">
+            <ChevronRight size={30} />
+          </button>
 
-        <Swiper
-          modules={[Navigation, Pagination, Thumbs, EffectCoverflow, Autoplay, Keyboard]}
-          onSwiper={(s) => (mainRef.current = s)}
-          effect="coverflow"
-          coverflowEffect={{ rotate: 24, stretch: 0, depth: 160, modifier: 1, slideShadows: false }}
-          centeredSlides
-          slidesPerView="auto"
-          spaceBetween={0}
-          loop={canLoop}
-          rewind={!canLoop}
-          speed={700}
-          grabCursor
-          keyboard
-          autoplay={{ delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true }}
-          navigation={{ prevEl: ".gal__arrow--prev", nextEl: ".gal__arrow--next" }}
-          pagination={{ el: ".gal__dots", clickable: true }}
-          thumbs={{ swiper: thumbs && !thumbs.destroyed ? thumbs : null }}
-        >
-          {galleryItems.map((item) => (
-            <SwiperSlide key={item.src} className="gal__slide-wrap">
-              <figure className="gal__slide">
-                <img src={item.src} alt={`${item.name} (${item.category})`} />
-                <figcaption className="gal__caption">
-                  <span className="gal__cat">{item.category}</span>
-                  <span className="gal__name">{item.name}</span>
-                  <span className="gal__bar" aria-hidden="true" />
-                </figcaption>
-                <button
-                  className="gal__go"
-                  aria-label="Next photo"
-                  onClick={() => mainRef.current?.slideNext()}
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </figure>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <div className="gal__viewport">
+            <Swiper
+              modules={[Navigation, Pagination, Thumbs, EffectCoverflow, Autoplay, Keyboard]}
+              onSwiper={(s) => (mainRef.current = s)}
+              onSlideChange={(s) => setActive(s.realIndex)}
+              effect="coverflow"
+              coverflowEffect={{ rotate: 24, stretch: 0, depth: 160, modifier: 1, slideShadows: false }}
+              centeredSlides
+              slidesPerView="auto"
+              spaceBetween={0}
+              loop={canLoop}
+              rewind={!canLoop}
+              speed={700}
+              grabCursor
+              keyboard
+              slideToClickedSlide
+              autoplay={{ delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true }}
+              navigation={{ prevEl: ".gal__arrow--prev", nextEl: ".gal__arrow--next" }}
+              pagination={{ el: ".gal__dots", clickable: true }}
+              thumbs={{ swiper: thumbs && !thumbs.destroyed ? thumbs : null }}
+            >
+              {galleryItems.map((item) => (
+                <SwiperSlide key={item.src} className="gal__slide-wrap">
+                  {({ isActive }) => (
+                    <figure className="gal__slide">
+                      <img src={item.src} alt="" />
+                      <figcaption className="gal__caption">
+                        <span className="gal__cat">{item.category}</span>
+                        <span className="gal__name">{item.name}</span>
+                        <span className="gal__bar" aria-hidden="true" />
+                        <span className="gal__more">
+                          View details <ArrowRight size={16} aria-hidden="true" />
+                        </span>
+                      </figcaption>
+
+                      {/* Clicking the photo opens the details card */}
+                      <button
+                        type="button"
+                        className="gal__hit"
+                        tabIndex={isActive ? 0 : -1}
+                        aria-label={`View details for ${item.name}`}
+                        onClick={() => {
+                          if (isActive) setOpen((o) => !o);
+                        }}
+                      />
+                    </figure>
+                  )}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+
+        <DetailCard item={galleryItems[active] ?? galleryItems[0]} open={open} onClose={closeDetails} />
       </div>
 
       <Swiper
@@ -132,7 +167,7 @@ export default function Galleryshowcase() {
         <span className="gal__hint-hover">
           Hover over an image to see the name of the pastry, or click the thumbnails to view more.
         </span>
-        <span className="gal__hint-touch">Swipe the photo, or tap the thumbnails to view more.</span>
+        <span className="gal__hint-touch">Tap a photo for details, or tap the thumbnails to view more.</span>
       </p>
     </div>
   );

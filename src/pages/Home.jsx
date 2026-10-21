@@ -4,6 +4,7 @@ import Mapsection from "@/components/contact/Mapsection";
 import Gallery from "./Gallery";
 import Featurestrip from "@/components/home/Featuresstrip";
 import Menucategories from "@/components/home/Menucategories";
+import Ourstory from "@/components/home/Ourstory";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Menucategories />
       <Gallery />
       <Testimonials />
+      <Ourstory />
       <Mapsection />
     </>
   );
