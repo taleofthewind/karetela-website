@@ -19,7 +19,7 @@ export const menuCategories = [
     id: "pastries",
     title: "Fresh Cakes",
     text: "Sweet treats for every moment",
-    image: img("pastry1.jpg"),
+    image: img("pastry7.jpg"),
     to: "/menu?category=pastries",
   },
   {
@@ -33,7 +33,7 @@ export const menuCategories = [
     id: "custom",
     title: "Custom Cakes & Pastries",
     text: "Made to order for your celebration",
-    image: img("custom.jpg"),
+    image: img("pastry1.jpg"),
     to: "/menu?category=custom",
   },
 ];
