@@ -3,6 +3,7 @@
   --gold-soft: rgba(233, 185, 73, 0.55);
 
   /* shared with the details card */
+  --slide-w: 60%; /* width of the centre photo, used to place the button */
   --detail-w: clamp(18rem, 23vw, 23rem);
   --detail-overlap: 3.5rem;
   --detail-shift: calc((var(--detail-w) - var(--detail-overlap)) / 2);
@@ -88,7 +89,12 @@
 }
 
 .gal__slide-wrap:not(.swiper-slide-active) .gal__hit {
-  cursor: grab;
+  cursor: pointer;
+}
+
+/* side photos light up a little so they look clickable */
+.gal__slide-wrap:not(.swiper-slide-active):hover {
+  opacity: 0.8;
 }
 
 .gal__hit:focus-visible {
@@ -292,21 +298,26 @@
 /* ---------- Tablet / phone ---------- */
 @media (max-width: 900px) {
   .gal__slide-wrap {
-    width: 74%;
+    width: 66%; /* more of the neighbouring photos shows, so they are easy to tap */
   }
 
   .gal__arrow {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
   }
 
-  .gal__arrow--prev { left: 0.75rem; }
-  .gal__arrow--next { right: 0.75rem; }
+  .gal__arrow--prev { left: 0.4rem; }
+  .gal__arrow--next { right: 0.4rem; }
 }
 
 @media (max-width: 640px) {
   .gal__slide-wrap {
-    width: 84%;
+    width: 74%;
+    opacity: 0.7;
+  }
+
+  .gal__slide-wrap.swiper-slide-active {
+    opacity: 1;
   }
 
   .gal__slide {
@@ -354,5 +365,62 @@
   .gal__slide-wrap,
   .gal__thumb {
     transition: none;
+  }
+}
+
+/* ---------- "View details" button on small screens ---------- */
+.gal__details-btn {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .gal { --slide-w: 66%; }
+}
+
+@media (max-width: 640px) {
+  .gal { --slide-w: 74%; }
+}
+
+@media (max-width: 1180px) {
+  .gal__details-btn {
+    position: absolute;
+    z-index: 6; /* above the photos */
+    left: calc(50% - var(--slide-w) / 2 + 1rem);
+    bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: rgba(10, 8, 6, 0.75);
+    color: var(--gold);
+    font: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .gal__details-btn:hover {
+    background: var(--gold);
+    color: #14100a;
+  }
+
+  .gal__details-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  /* the real button replaces the old text label, and the caption makes room for it */
+  .gal__more {
+    display: none;
+  }
+
+  .gal__caption {
+    padding-bottom: 4.25rem;
   }
 }

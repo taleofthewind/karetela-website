@@ -6,6 +6,7 @@ import "./Detailcard.css";
 
 export default function Detailcard({ item, open, onClose }) {
   const closeRef = useRef(null);
+  const rootRef = useRef(null);
 
   // Escape closes the card
   useEffect(() => {
@@ -22,10 +23,22 @@ export default function Detailcard({ item, open, onClose }) {
     return () => cancelAnimationFrame(id);
   }, [open]);
 
+  // Small screens: the card sits under the photo, so make sure it is on screen when it opens
+  useEffect(() => {
+    if (!open) return;
+    if (!window.matchMedia("(max-width: 1180px)").matches) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const id = requestAnimationFrame(() =>
+      rootRef.current?.scrollIntoView({ block: "nearest", behavior: reduce ? "auto" : "smooth" })
+    );
+    return () => cancelAnimationFrame(id);
+  }, [open, item?.src]);
+
   if (!item) return null;
 
   return (
     <aside
+      ref={rootRef}
       className={`gal__detail ${open ? "is-open" : ""}`}
       aria-label={`Details for ${item.name}`}
       aria-hidden={!open}

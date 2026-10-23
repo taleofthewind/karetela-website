@@ -78,6 +78,14 @@ export default function Galleryshowcase() {
   // Both side previews need neighbours, so loop only when there are enough photos
   const canLoop = galleryItems.length >= 6;
 
+  // Jump to any photo (works with and without loop)
+  const goTo = (index) => {
+    const swiper = mainRef.current;
+    if (!swiper) return;
+    if (canLoop) swiper.slideToLoop(index);
+    else swiper.slideTo(index);
+  };
+
   return (
     <div className={`gal ${open ? "gal--open" : ""}`} ref={root}>
       <div className="gal__stage">
@@ -104,13 +112,12 @@ export default function Galleryshowcase() {
               speed={700}
               grabCursor
               keyboard
-              slideToClickedSlide
               autoplay={{ delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true }}
               navigation={{ prevEl: ".gal__arrow--prev", nextEl: ".gal__arrow--next" }}
               pagination={{ el: ".gal__dots", clickable: true }}
               thumbs={{ swiper: thumbs && !thumbs.destroyed ? thumbs : null }}
             >
-              {galleryItems.map((item) => (
+              {galleryItems.map((item, index) => (
                 <SwiperSlide key={item.src} className="gal__slide-wrap">
                   {({ isActive }) => (
                     <figure className="gal__slide">
@@ -129,9 +136,16 @@ export default function Galleryshowcase() {
                         type="button"
                         className="gal__hit"
                         tabIndex={isActive ? 0 : -1}
-                        aria-label={`View details for ${item.name}`}
+                        aria-label={
+                          index === active ? `View details for ${item.name}` : `Show ${item.name}`
+                        }
                         onClick={() => {
-                          if (isActive) setOpen((o) => !o);
+                          if (index === active) {
+                            setOpen((o) => !o);
+                          } else {
+                            goTo(index);
+                            setOpen(true);
+                          }
                         }}
                       />
                     </figure>
@@ -140,6 +154,18 @@ export default function Galleryshowcase() {
               ))}
             </Swiper>
           </div>
+
+          {/* Small screens: a real button on top of the photo, outside the slider,
+              so it works on every photo (the text label inside the photo is not a button) */}
+          <button
+            type="button"
+            className="gal__details-btn"
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? "Hide details" : "View details"}
+            <ArrowRight size={16} aria-hidden="true" />
+          </button>
         </div>
 
         <Detailcard item={galleryItems[active] ?? galleryItems[0]} open={open} onClose={closeDetails} />
