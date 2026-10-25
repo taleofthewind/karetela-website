@@ -139,6 +139,7 @@
   width: var(--cw);
   height: 100%;
   margin: 0;
+  pointer-events: none; /* photos are only for looking at, so they must never block the arrows */
   transform-origin: left center;
   transform: translateX(calc(var(--k) * var(--step))) scale(var(--s));
   filter: brightness(var(--b));
@@ -168,6 +169,8 @@
 
 /* ---------- Arrows ---------- */
 .story__arrow {
+  position: relative;
+  z-index: 40; /* above every photo */
   flex-shrink: 0;
   display: grid;
   place-items: center;

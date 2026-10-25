@@ -182,9 +182,16 @@
 .gal__arrow--prev { left: 2.5rem; }
 .gal__arrow--next { right: 2.5rem; }
 
-.gal__arrow:hover {
+.gal__arrow:active {
   background: var(--gold);
   color: #111;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gal__arrow:hover {
+    background: var(--gold);
+    color: #111;
+  }
 }
 
 .gal__arrow.swiper-button-lock {
@@ -405,9 +412,18 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  .gal__details-btn:hover {
+  /* quick colour flash while a finger is pressing */
+  .gal__details-btn:active {
     background: var(--gold);
     color: #14100a;
+  }
+
+  /* hover colour only for devices with a real mouse, so it never sticks on phones */
+  @media (hover: hover) and (pointer: fine) {
+    .gal__details-btn:hover {
+      background: var(--gold);
+      color: #14100a;
+    }
   }
 
   .gal__details-btn:focus-visible {

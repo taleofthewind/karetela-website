@@ -153,9 +153,16 @@
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-.gal__detail-btn:hover {
+.gal__detail-btn:active {
   background: var(--gold);
   color: #1a1208;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gal__detail-btn:hover {
+    background: var(--gold);
+    color: #1a1208;
+  }
 }
 
 @keyframes galDetailIn {
