@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./Navbar";
@@ -23,7 +23,10 @@ export default function Layout() {
     <div className="layout">
       <Navbar />
       <main>
-        <Outlet />
+        {/* shows nothing for a split second while a page's code downloads */}
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>

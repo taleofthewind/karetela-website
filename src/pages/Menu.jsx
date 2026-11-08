@@ -1,11 +1,12 @@
-import { useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import CategoryTabs from "@/components/menu/Categorytabs";
 import MenuCard from "@/components/menu/Menucard";
-import Customordercard from "@/components/menu/Customordercard";
+import CustomOrderCard from "@/components/menu/Customordercard";
+import MenuLightbox from "@/components/menu/Menulightbox";
 import { menuTabs, menuItems } from "@/data/menu";
 import "./Menu.css";
 
@@ -51,6 +52,20 @@ function LeafBranch() {
 export default function Menu() {
   const root = useRef(null);
   const [params, setParams] = useSearchParams();
+
+  // The photo that is open in the big view (null = closed)
+  const [selected, setSelected] = useState(null);
+  const triggerRef = useRef(null);
+
+  const openItem = useCallback((item, button) => {
+    triggerRef.current = button; // remember which photo was tapped
+    setSelected(item);
+  }, []);
+
+  const closeItem = useCallback(() => {
+    setSelected(null);
+    triggerRef.current?.focus?.({ preventScroll: true }); // give focus back
+  }, []);
 
   // The category lives in the URL (?category=breads) so the Home cards can link here
   const requested = params.get("category");
@@ -181,9 +196,9 @@ export default function Menu() {
 
               <div className="menu-grid">
                 {section.items.map((item) => (
-                  <MenuCard key={item.id} item={item} />
+                  <MenuCard key={item.id} item={item} onOpen={openItem} />
                 ))}
-                {section.id === "custom" && <Customordercard />}
+                {section.id === "custom" && <CustomOrderCard />}
               </div>
             </section>
           ))}
@@ -193,6 +208,12 @@ export default function Menu() {
           <p className="menu-empty">Nothing here yet. Check back soon!</p>
         )}
       </div>
+
+      <MenuLightbox
+        item={selected}
+        label={menuTabs.find((t) => t.id === selected?.category)?.label}
+        onClose={closeItem}
+      />
     </div>
   );
 }

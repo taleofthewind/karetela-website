@@ -1,17 +1,29 @@
-import "./Menucard.css";
+import { Maximize2 } from "lucide-react";
+import "./MenuCard.css";
 
-export default function Menucard({ item }) {
+export default function Menucard({ item, onOpen }) {
   return (
     <article className="menu-card">
-      <div className="menu-card__media">
-        {item.image ? (
-          <img src={item.image} alt={item.name} loading="lazy" />
-        ) : (
+      {item.image ? (
+        // Only the photo is clickable. It opens the bigger view.
+        <button
+          type="button"
+          className="menu-card__media menu-card__media--btn"
+          aria-label={`View ${item.name} larger`}
+          onClick={(e) => onOpen?.(item, e.currentTarget)}
+        >
+          <img src={item.image} alt="" loading="lazy" decoding="async" />
+          <span className="menu-card__zoom" aria-hidden="true">
+            <Maximize2 size={16} />
+          </span>
+        </button>
+      ) : (
+        <div className="menu-card__media">
           <span className="menu-card__placeholder" aria-hidden="true">
             Photo coming soon
           </span>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="menu-card__body">
         <h3 className="menu-card__name">{item.name}</h3>

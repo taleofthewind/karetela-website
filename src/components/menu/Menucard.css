@@ -155,3 +155,54 @@
     transition: none;
   }
 }
+
+/* ---------- Clickable photo ---------- */
+.menu-card__media--btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-card__media--btn:focus-visible {
+  outline: 3px solid #e9b949;
+  outline-offset: 2px;
+}
+
+/* small magnifier badge so people know the photo can be tapped */
+.menu-card__zoom {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(10, 8, 6, 0.72);
+  color: #e9b949;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .menu-card__media--btn:hover .menu-card__zoom,
+  .menu-card__media--btn:focus-visible .menu-card__zoom {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* phones have no hover, so the badge is always visible */
+@media (hover: none) {
+  .menu-card__zoom {
+    opacity: 1;
+    transform: none;
+  }
+}

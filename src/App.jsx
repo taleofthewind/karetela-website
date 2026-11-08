@@ -1,9 +1,12 @@
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
-import Menu from "@/pages/Menu";
-import Gallery from "@/pages/Gallery";
-import Contact from "@/pages/Contact";
+
+// These pages download only when someone opens them, so the first load is lighter
+const Menu = lazy(() => import("@/pages/Menu"));
+const Gallery = lazy(() => import("@/pages/Gallery"));
+const Contact = lazy(() => import("@/pages/Contact"));
 
 export default function App() {
   return (

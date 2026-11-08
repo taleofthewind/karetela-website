@@ -12,7 +12,7 @@ export const siteInfo = {
   // TODO: replace these placeholders with the real ones
   phone: "0900 000 0000",
   email: "hello@karetela.com",
-  orderFormUrl: "https://forms.google.com/",
+  orderFormUrl: "https://www.facebook.com/profile.php?id=61590859327133",
   socials: {
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",

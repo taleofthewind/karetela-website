@@ -3,7 +3,19 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #0b0907;
+
+  /* AT THE TOP: solid black */
+  --navbar-bg: #0b0907;
+  /* AFTER SCROLLING: see-through glass (lower the last number for more see-through) */
+  --navbar-glass: rgba(11, 9, 7, 0.72);
+
+  background: var(--navbar-bg);
+  -webkit-backdrop-filter: blur(0px) saturate(100%);
+  backdrop-filter: blur(0px) saturate(100%);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease, -webkit-backdrop-filter 0.35s ease;
+
   color: #f4efe6;
   font-family: "Poppins", system-ui, sans-serif;
 }
@@ -243,6 +255,32 @@
   .navbar__cta,
   .navbar__cta svg,
   .navbar__social {
+    transition: none;
+  }
+}
+
+/* ---------- Scrolled: glass ---------- */
+.navbar.is-scrolled {
+  background: var(--navbar-glass);
+  -webkit-backdrop-filter: blur(14px) saturate(160%); /* blur strength */
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* while the phone menu is open, keep it solid so the links stay easy to read */
+.navbar.is-open {
+  background: var(--navbar-bg);
+}
+
+/* browsers that cannot blur just stay solid black */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .navbar.is-scrolled {
+    background: var(--navbar-bg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
     transition: none;
   }
 }

@@ -89,7 +89,7 @@ const items = [
   {
     id: "pandesal",
     category: "breads",
-    name: "Pandesal",
+    name: "Ensaymada",
     price: "12",
     description: "Soft, fluffy, and perfectly baked for your everyday cravings.",
     image: "bread1.jpg",
@@ -97,7 +97,7 @@ const items = [
   {
     id: "white-loaf-bread",
     category: "breads",
-    name: "White Loaf Bread",
+    name: "Cookies and Cream Puffs",
     price: "85",
     description: "Classic and versatile \u2014 perfect for sandwiches and toast.",
     image: "bread2.jpg",
@@ -105,7 +105,7 @@ const items = [
   {
     id: "ensaymada",
     category: "breads",
-    name: "Ensaymada",
+    name: "Ube Ensaymada",
     price: "45",
     description: "Soft bread with sweet butter and cheese on top.",
     image: "bread3.jpg",
@@ -113,31 +113,23 @@ const items = [
   {
     id: "whole-wheat-bread",
     category: "breads",
-    name: "Whole Wheat Bread",
+    name: "Classic Custard Cake",
     price: "95",
     description: "Healthy, hearty, and full of goodness.",
     image: "bread4.jpg",
   },
   {
-    id: "cheese-bread",
+    id: "pianono",
     category: "breads",
-    name: "Cheese Bread",
+    name: "Pianono",
     price: "55",
     description: "Soft bread with a savory cheese filling.",
     image: "bread5.jpg",
   },
-  {
-    id: "ube-bread",
-    category: "breads",
-    name: "Ube Bread",
-    price: "55",
-    description: "A sweet and fluffy bread with real ube flavor.",
-    image: "bread6.jpg",
-  },
     {
     id: "tinapay1",
     category: "breads",
-    name: "Ube Bread",
+    name: "Pinoy Hopia",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread7.jpg",
@@ -145,7 +137,7 @@ const items = [
     {
     id: "tinapay2",
     category: "breads",
-    name: "Ube Bread",
+    name: "Cupcake with Raisins",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread8.jpg",
@@ -153,7 +145,7 @@ const items = [
     {
     id: "tinapay3",
     category: "breads",
-    name: "Ube Bread",
+    name: "Spanish Bread",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread9.jpg",
@@ -161,7 +153,7 @@ const items = [
     {
     id: "tinapay4",
     category: "breads",
-    name: "Ube Bread",
+    name: "Ube Mamon",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread10.jpg",
@@ -169,7 +161,7 @@ const items = [
     {
     id: "tinapay5",
     category: "breads",
-    name: "Ube Bread",
+    name: "Cupcake",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread11.jpg",
@@ -177,7 +169,7 @@ const items = [
     {
     id: "tinapay6",
     category: "breads",
-    name: "Ube Bread",
+    name: "Putok",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread12.jpg",
@@ -185,7 +177,7 @@ const items = [
     {
     id: "tinapay7",
     category: "breads",
-    name: "Ube Bread",
+    name: "Ube Ensaymada",
     price: "55",
     description: "A sweet and fluffy bread with real ube flavor.",
     image: "bread13.jpg",

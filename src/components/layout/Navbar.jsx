@@ -4,7 +4,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import logo from "@/assets/images/cut1.png";
+import logo from "@/assets/images/cut.png";
 import { siteInfo } from "@/data/siteinfo";
 import "./Navbar.css";
 
@@ -41,8 +41,16 @@ const TikTokIcon = () => (
 const reduceMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/*
+  Sticky header switch:
+    false = the header stays on screen all the time (sticky)
+    true  = the header slides away when scrolling down and returns when scrolling up
+*/
+const HIDE_ON_SCROLL = false;
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // true once the page has scrolled a little
   const { pathname } = useLocation();
   const root = useRef(null);
   const openRef = useRef(false);
@@ -53,6 +61,14 @@ export default function Navbar() {
   useEffect(() => {
     openRef.current = open;
   }, [open]);
+
+  // Solid black at the top, glass once you scroll (24 = how many pixels before it switches)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Close the mobile menu when the page changes
   useEffect(() => {
@@ -79,21 +95,23 @@ export default function Navbar() {
         stagger: 0.08,
       });
 
-      let hidden = false;
-      ScrollTrigger.create({
-        start: 0,
-        end: "max",
-        onUpdate: (self) => {
-          const down = self.direction === 1;
-          if (down && self.scroll() > 120 && !openRef.current && !hidden) {
-            hidden = true;
-            gsap.to(".navbar", { yPercent: -100, duration: 0.35, ease: "power2.out" });
-          } else if (!down && hidden) {
-            hidden = false;
-            gsap.to(".navbar", { yPercent: 0, duration: 0.35, ease: "power2.out" });
-          }
-        },
-      });
+      if (HIDE_ON_SCROLL) {
+        let hidden = false;
+        ScrollTrigger.create({
+          start: 0,
+          end: "max",
+          onUpdate: (self) => {
+            const down = self.direction === 1;
+            if (down && self.scroll() > 120 && !openRef.current && !hidden) {
+              hidden = true;
+              gsap.to(".navbar", { yPercent: -100, duration: 0.35, ease: "power2.out" });
+            } else if (!down && hidden) {
+              hidden = false;
+              gsap.to(".navbar", { yPercent: 0, duration: 0.35, ease: "power2.out" });
+            }
+          },
+        });
+      }
     },
     { scope: root }
   );
@@ -137,7 +155,10 @@ export default function Navbar() {
   });
 
   return (
-    <header className="navbar" ref={root}>
+    <header
+      className={`navbar ${scrolled ? "is-scrolled" : ""} ${open ? "is-open" : ""}`}
+      ref={root}
+    >
       <div className="navbar__inner">
         <Link
           to="/"

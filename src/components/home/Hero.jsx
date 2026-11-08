@@ -85,7 +85,7 @@ export default function Hero() {
 
   return (
     <section className="hero" ref={root}>
-      <img className="hero__bg" src={heroImg} alt="" />
+      <img className="hero__bg" src={heroImg} alt="" fetchPriority="high" decoding="async" />
       <div className="hero__overlay" />
 
       <LeafBranch className="hero__leaves--top" flip />

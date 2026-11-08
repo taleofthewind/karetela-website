@@ -1,0 +1,204 @@
+.mlb {
+  --gold: #e9b949;
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* above the navbar */
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(6, 4, 2, 0.82);
+  backdrop-filter: blur(4px);
+  font-family: "Lora", serif;
+  animation: mlbFade 0.25s ease both;
+}
+
+.mlb__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  width: min(920px, 100%);
+  max-height: min(88vh, 640px);
+  overflow: hidden;
+  border: 1px solid rgba(233, 185, 73, 0.7);
+  border-radius: 18px;
+  background: #0f0b07;
+  color: #fff;
+  box-shadow: 0 0 50px rgba(233, 185, 73, 0.12), 0 30px 70px rgba(0, 0, 0, 0.7);
+  animation: mlbRise 0.35s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+.mlb__photo {
+  min-height: 320px;
+  background: #1a1511;
+}
+
+.mlb__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mlb__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 2.25rem 2rem;
+  overflow-y: auto;
+}
+
+.mlb__tag {
+  margin: 0 0 0.6rem;
+  padding-right: 3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.mlb__name {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.mlb__price {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.mlb__desc {
+  margin: 0 0 1.6rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #efe7d6;
+}
+
+.mlb__btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0c765, #dba43d);
+  color: #1a1208;
+  font-weight: 600;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mlb__btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mlb__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(233, 185, 73, 0.35);
+  }
+}
+
+.mlb__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(233, 185, 73, 0.6);
+  border-radius: 50%;
+  background: rgba(10, 8, 6, 0.75);
+  color: var(--gold);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mlb__close:active {
+  background: var(--gold);
+  color: #1a1208;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mlb__close:hover {
+    background: var(--gold);
+    color: #1a1208;
+  }
+}
+
+.mlb__close:focus-visible,
+.mlb__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@keyframes mlbFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mlbRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Phones: photo on top, text below (only the text scrolls) ---------- */
+@media (max-width: 720px) {
+  .mlb {
+    padding: 0.75rem;
+  }
+
+  .mlb__panel {
+    display: flex;
+    flex-direction: column;
+    max-height: 92vh;
+  }
+
+  .mlb__photo {
+    flex: 0 0 auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .mlb__info {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    padding: 1.4rem 1.25rem 1.5rem;
+  }
+
+  .mlb__tag {
+    padding-right: 0;
+  }
+
+  .mlb__btn {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mlb,
+  .mlb__panel {
+    animation: none;
+  }
+
+  .mlb__btn,
+  .mlb__close {
+    transition: none;
+  }
+}

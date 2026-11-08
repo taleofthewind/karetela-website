@@ -24,9 +24,9 @@ export const testimonials = [
     role: "Local Customer",
     rating: 5,
     quote:
-      "The pastries here are always fresh and delicious! My family loves the ensaymada and the ube cake. Highly recommended!",
+      "The miki noodles were thick and chewy, and they didn’t skim on the toppings—loaded with lechon chunks, liver, and chicharon!",
     avatar: img("karl.jpg"),
-    photo: img("bread.jpg"),
+    photo: img("lomi.jpg"),
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const testimonials = [
     quote:
       "KARETELA never disappoints! Their bread is soft, the meals are flavorful, and the staff are so friendly. Our go-to bakery from now on!",
     avatar: img("filipina.jpg"),
-    photo: img("bread.jpg"),
+    photo: img("strawberry.jpg"),
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export const testimonials = [
     role: "Local Customer",
     rating: 5,
     quote:
-      "I ordered their chocolate croissant and it was absolutely amazing! Flaky, buttery, and just the right amount of sweetness.",
+      "An exceptional ensaymada strikes a precise balance between a pillowy, buttery brioche bun and a rich, salty-sweet crown of cheese and sugar.",
     avatar: img("patrick.jpg"),
     photo: img("bread.jpg"),
   },
@@ -54,9 +54,9 @@ export const testimonials = [
     role: "Local Customer",
     rating: 5,
     quote:
-      "The food is always consistent and the prices are reasonable. KARETELA really brings the taste of home. Keep up the great work!",
+      "These mamon must be wonderfully soft and light and I love the idea of brushing them with melted butter when they come out of the oven – yummy!",
     avatar: img("richard.jpg"),
-    photo: img("bread.jpg"),
+    photo: img("mamon.jpg"),
   },
   {
     id: 5,
@@ -66,16 +66,6 @@ export const testimonials = [
     quote:
       "The food is always consistent and the prices are reasonable. KARETELA really brings the taste of home. Keep up the great work!",
     avatar: img("pat.jpg"),
-    photo: img("bread.jpg"),
-  },
-    {
-    id: 6,
-    name: "Sheila",
-    role: "Local Customer",
-    rating: 5,
-    quote:
-      "The food is always consistent and the prices are reasonable. KARETELA really brings the taste of home. Keep up the great work!",
-    avatar: img("sheila.jpg"),
-    photo: img("bread.jpg"),
+    photo: img("hopia.jpg"),
   },
 ];

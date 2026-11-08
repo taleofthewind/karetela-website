@@ -163,3 +163,29 @@
     transition: none;
   }
 }
+
+/* ---------- Very small phones ---------- */
+@media (max-width: 359px) {
+  .hero__inner {
+    padding: 2.25rem 1rem;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero__title {
+    font-size: 2.1rem;
+  }
+
+  .hero__text {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .hero__btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.92rem;
+  }
+}
