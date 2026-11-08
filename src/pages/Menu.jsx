@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import CategoryTabs from "@/components/menu/Categorytabs";
 import MenuCard from "@/components/menu/Menucard";
 import CustomOrderCard from "@/components/menu/Customordercard";
-import MenuLightbox from "@/components/menu/Menulightbox";
+import Menulightbox from "@/components/menu/Menulightbox";
 import { menuTabs, menuItems } from "@/data/menu";
 import "./Menu.css";
 
@@ -209,7 +209,7 @@ export default function Menu() {
         )}
       </div>
 
-      <MenuLightbox
+      <Menulightbox
         item={selected}
         label={menuTabs.find((t) => t.id === selected?.category)?.label}
         onClose={closeItem}

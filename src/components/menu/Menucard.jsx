@@ -1,5 +1,5 @@
 import { Maximize2 } from "lucide-react";
-import "./MenuCard.css";
+import "./Menucard.css";
 
 export default function Menucard({ item, onOpen }) {
   return (
