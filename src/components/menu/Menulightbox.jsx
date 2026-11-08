@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X, ArrowRight } from "lucide-react";
 import { siteInfo } from "@/data/siteinfo";
-import "./MenuLightbox.css";
+import "./Menulightbox.css";
 
-export default function MenuLightbox({ item, label, onClose }) {
+export default function Menulightbox({ item, label, onClose }) {
   const panelRef = useRef(null);
   const closeRef = useRef(null);
 
