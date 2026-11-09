@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { menuCategories } from "@/data/menucategories";
-import "./MenuCategories.css";
+import "./Menucategories.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
