@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { menuCategories } from "@/data/menucategories";
-import "./Menucategories.css";
+import "./MenuCategories.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -49,7 +49,20 @@ const CakeIcon = () => (
   </Svg>
 );
 
-const icons = { pastries: CroissantIcon, breads: BreadIcon, custom: CakeIcon };
+const ForkKnifeIcon = () => (
+  <Svg>
+    <path d="M4 3v6a3 3 0 0 0 6 0V3" />
+    <path d="M7 3v18" />
+    <path d="M18 21V3c-2.2 1.2-3.5 4-3.5 7.5 0 1.7.8 2.5 2 2.5H18" />
+  </Svg>
+);
+
+const icons = {
+  pastries: CroissantIcon,
+  breads: BreadIcon,
+  custom: CakeIcon,
+  kusina: ForkKnifeIcon,
+};
 
 /* Gold line-art branch, mirrored for the right side */
 const leaves = [
@@ -87,7 +100,7 @@ function LeafBranch({ side }) {
   );
 }
 
-export default function Menucategories() {
+export default function MenuCategories() {
   const root = useRef(null);
 
   useGSAP(

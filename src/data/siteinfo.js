@@ -5,13 +5,13 @@ export const siteInfo = {
   name: "Karetela Kusina & Bakery",
   address: ["Galvan Street, Dagupan City,", "Philippines 2400"],
   hours: [
-    { days: "Monday - Friday", time: "9:00am - 10pm" },
-    { days: "Saturday - Sunday", time: "10:00am - 10pm" },
+    { days: "Monday - Saturday", time: "6:30am - 11pm" },
+    { days: "Saturday - Sunday", time: "6:30am - 9pm" },
   ],
 
   // TODO: replace these placeholders with the real ones
-  phone: "0900 000 0000",
-  email: "hello@karetela.com",
+  phone: "+639 565 071 070",
+  email: "karetelakusina@gmail.com",
   orderFormUrl: "https://www.facebook.com/profile.php?id=61590859327133",
   socials: {
     instagram: "https://www.instagram.com/",

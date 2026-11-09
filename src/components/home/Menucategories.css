@@ -5,7 +5,7 @@
   overflow: hidden;
   padding: 3.5rem 1.5rem 4rem;
   background:
-    radial-gradient(ellipse at 50% 0%, #faf6ee 0%, #f5f0e6 60%, #efe8da 100%);
+  radial-gradient(ellipse at 50% 0%, #faf6ee 0%, #f5f0e6 60%, #efe8da 100%);
   font-family: "Poppins", system-ui, sans-serif;
 }
 
@@ -71,14 +71,15 @@
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 4 cards = 2 x 2. Use repeat(4, 1fr) for one row */
+  gap: 1.5rem;
 }
 
 .menucat__card {
   position: relative;
   display: block;
-  aspect-ratio: 1.7 / 1;
+  min-width: 0; /* lets the card shrink with its column */
+  aspect-ratio: 2.1 / 1;
   min-height: 250px;
   overflow: hidden;
   border-radius: 14px;
@@ -198,14 +199,9 @@
   }
 
   .menucat__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* the 3rd card spans the full row so the grid doesn't look lopsided */
-  .menucat__card:last-child {
-    grid-column: 1 / -1;
-    aspect-ratio: 3.4 / 1;
-  }
 }
 
 @media (max-width: 640px) {
@@ -214,7 +210,7 @@
   }
 
   .menucat__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.1rem;
   }
 

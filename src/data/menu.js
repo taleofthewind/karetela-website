@@ -21,6 +21,7 @@ const img = (name) => {
 
 export const menuTabs = [
   { id: "all", label: "All Items" },
+  { id: "kusina", label: "Kusina Meals" },
   { id: "pastries", label: "Fresh Cakes" },
   { id: "breads", label: "Fresh Breads" },
   { id: "custom", label: "Custom Cakes" },
@@ -200,6 +201,49 @@ const items = [
     description: "Perfect for birthdays, celebrations, and special moments.",
     image: "jordancake.jpg",
   },
+
+    // ---------- Kusina Meals ----------
+  {
+    id: "chicken-strips",
+    category: "kusina",
+    name: "Chicken Strips",
+    price: "120",
+    description: "Chicken slowly cooked in soy sauce, vinegar, and garlic, served with rice.",
+    image: "chickenstrips.webp",
+  },
+  {
+    id: "lomi",
+    category: "kusina",
+    name: "Lomi",
+    price: "90",
+    description: "Stir-fried noodles with vegetables in a savory sauce, a party favorite.",
+    image: "lomi.webp",
+  },
+  {
+    id: "mami",
+    category: "kusina",
+    name: "Mami",
+    price: "140",
+    description: "Pork in a sour tamarind broth with fresh vegetables.",
+    image: "mickey.webp",
+  },
+  {
+    id: "monggo",
+    category: "kusina",
+    name: "Monggo with Ampalaya",
+    price: "140",
+    description: "Pork in a sour tamarind broth with fresh vegetables.",
+    image: "monggo.webp",
+  },
+  {
+    id: "torta",
+    category: "kusina",
+    name: "Tortang Talong",
+    price: "140",
+    description: "Pork in a sour tamarind broth with fresh vegetables.",
+    image: "torta.webp",
+  },
+
 ];
 
 export const menuItems = items.map((item) => ({ ...item, image: img(item.image) }));

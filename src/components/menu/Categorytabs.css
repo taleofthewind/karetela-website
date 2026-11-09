@@ -57,6 +57,11 @@
   .menu-tabs__btn:hover {
     transform: none;
   }
+
+  /* "All Items" gets a full row, the other pills sit in pairs under it */
+  .menu-tabs__btn:first-child {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

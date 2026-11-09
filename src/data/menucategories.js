@@ -36,4 +36,11 @@ export const menuCategories = [
     image: img("pastry1.jpg"),
     to: "/menu?category=custom",
   },
+  {
+    id: "kusina",
+    title: "Kusina Meals",
+    text: "Home-style Filipino favorites",
+    image: img("chickenstrips.webp"),
+    to: "/menu?category=kusina",
+  },
 ];
