@@ -23,13 +23,21 @@ const files = import.meta.glob("@/assets/images/gallery/*.{jpg,jpeg,png,webp}", 
 });
 
 const listed = [
+    {
+    file: "pandecoco.jpg",
+    category: "Bread",
+    tag: "Filipino Pastry",
+    kind: "Pastry",
+    name: "Pan De Coco",
+    description: "A soft and fluffy Filipino bread roll filled with sweet, rich coconut filling made from freshly grated coconut and caramelized sugar. Slightly chewy, deliciously sweet, and perfect for your afternoon merienda!",
+  },
   {
     file: "bread.jpg",
     category: "Bread",
     tag: "Filipino Pastry",
     kind: "Pastry",
-    name: "Ensaymada",
-    description: "a soft, sweet, and buttery Filipino brioche pastry topped with a rich layer of butter, sugar, and a generous amount of grated cheese.",
+    name: "Pandesiosa",
+    description: "a popular Filipino pull-apart sweet bread roll originating from the Visayas region, particularly in cities like Bacolod and Iloilo.",
   },
   {
     file: "strawberry.jpg",
@@ -44,7 +52,7 @@ const listed = [
     category: "Soft Bread",
     tag: "Pinoy Bread",
     kind: "Pastry",
-    name: "Mamon",
+    name: "Pianono",
     description: "A traditional Filipino-style light, airy, and buttery mini chiffon or sponge cake baked in individual cupcake molds.",
   },
       {
