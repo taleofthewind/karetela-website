@@ -5,6 +5,7 @@ import Gallery from "./Gallery";
 import Featurestrip from "@/components/home/Featuresstrip";
 import Menucategories from "@/components/home/Menucategories";
 import Ourstory from "@/components/home/Ourstory";
+import Drinks from "@/components/home/Drinks"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Featurestrip />
       <Menucategories />
+      <Drinks />
       <Gallery />
       <Testimonials />
       <Ourstory />
