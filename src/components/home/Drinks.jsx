@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ChefHat, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChefHat, ChevronLeft, ChevronRight, ArrowRight, CupSoda } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -137,7 +137,7 @@ export default function Drinks() {
         <header className="drinks__head">
           <div className="drinks__emblem" aria-hidden="true">
             <span className="drinks__line drinks__line--l" />
-            <ChefHat size={46} strokeWidth={1.3} />
+            <CupSoda size={46} strokeWidth={1.3} />
             <span className="drinks__line drinks__line--r" />
           </div>
           <h2 className="drinks__title scroll-blur" id="drinks-title">
