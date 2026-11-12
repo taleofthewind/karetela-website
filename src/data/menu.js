@@ -250,12 +250,20 @@ const items = [
     image: "custom/mobleg.jpg",
   },
   {
-    id: "cupcake-box",
+    id: "jordan-cake",
     category: "custom",
     name: "Jordan Cake",
     price: "2000+",
     description: "the price is depends on whats designed of the cake.",
     image: "jordancake.jpg",
+  },
+  {
+    id: "sofia-cake",
+    category: "custom",
+    name: "Sofia Cake",
+    price: "2000+",
+    description: "the price is depends on whats designed of the cake.",
+    image: "sofia-cake.jpg",
   },
 
     // ---------- Kusina Meals ----------

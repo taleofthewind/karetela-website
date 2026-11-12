@@ -22,7 +22,7 @@ const img = (name) => {
 const tabs = [
   {
     id: "coolers",
-    label: "Slushies & Ice Cream",
+    label: "Sundaes & Swirls",
     items: [
       {
         id: "cone-twirl",
@@ -30,7 +30,7 @@ const tabs = [
         description:
           "A classic favorite! Choose from chocolate, vanilla, or mix for the perfect swirl of happiness.",
         price: "",
-        image: "cone-twirl.jpg",
+        image: "",
       },
       {
         id: "chocolate-sundae",
@@ -50,56 +50,56 @@ const tabs = [
   },
   {
     id: "drinks",
-    label: "Refreshing Drinks",
+    label: "Refreshing Slushies",
     items: [
       {
         id: "blue-lemonade",
         name: "Blue Lemonade",
         description: "Icy fruit drinks in your favorite flavor, perfect for a hot day.",
         price: "50",
-        image: "blue-lemonade.jpg",
-      },
-      {
-        id: "cucumber-drink",
-        name: "Cucumber Lemonade",
-        description: "A sweet and icy slush that cools you down in one sip.",
-        price: "50",
-        image: "cucumber.webp",
-      },
-      {
-        id: "four-season",
-        name: "Four Season Lemonade",
-        description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
-        price: "50",
-        image: "fourseason.webp",
-      },
-        {
-        id: "iced-tea",
-        name: "Iced Tea House Blend",
-        description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
-        price: "50",
-        image: "tea.webp",
+        image: "lemonade.png",
       },
         {
         id: "orange-slush",
         name: "Mango Lemonade",
         description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
         price: "50",
-        image: "mango.webp",
+        image: "mango.png",
+      },
+      {
+        id: "cucumber-drink",
+        name: "Cucumber Lemonade",
+        description: "A sweet and icy slush that cools you down in one sip.",
+        price: "50",
+        image: "cucumber.png",
+      },
+      {
+        id: "four-season",
+        name: "Four Season Lemonade",
+        description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
+        price: "50",
+        image: "4seasons.png",
+      },
+        {
+        id: "iced-tea",
+        name: "Iced Tea House Blend",
+        description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
+        price: "50",
+        image: "icedti.png",
       },
         {
         id: "orange-slush",
         name: "Pineapple Lemonade",
         description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
         price: "50",
-        image: "pinya.jpg",
+        image: "pineapple.png",
       },
         {
         id: "red-tea",
         name: "Red Iced Tea",
         description: "Bright, fruity, and ice cold. A refreshing pick-me-up.",
         price: "50",
-        image: "red-tea.webp",
+        image: "red-teas.png",
       },
     ],
   },
