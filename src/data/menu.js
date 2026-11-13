@@ -104,7 +104,7 @@ const items = [
     image: "breads/bread2.jpg",
   },
   {
-    id: "ensaymada",
+    id: "ube-ensaymada",
     category: "breads",
     name: "Ube Ensaymada",
     price: "20",

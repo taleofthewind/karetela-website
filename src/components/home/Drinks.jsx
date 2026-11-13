@@ -51,7 +51,13 @@ export default function Drinks() {
   const root = useRef(null);
   const startX = useRef(null);
   const [tabId, setTabId] = useState(drinkTabs[0].id);
-  const [index, setIndex] = useState(0);
+  const [indexes, setIndexes] = useState({}); // remembers a position for each tab
+  const index = indexes[tabId] ?? 0;
+  const setIndex = (value) =>
+  setIndexes((prev) => ({
+    ...prev,
+    [tabId]: typeof value === "function" ? value(prev[tabId] ?? 0) : value,
+  }));
 
   const tab = drinkTabs.find((t) => t.id === tabId) ?? drinkTabs[0];
   const items = tab.items;
@@ -60,10 +66,7 @@ export default function Drinks() {
 
   const go = (dir) => setIndex((i) => (n ? (i + dir + n) % n : 0));
 
-  const chooseTab = (id) => {
-    setTabId(id);
-    setIndex(0);
-  };
+  const chooseTab = (id) => setTabId(id);
 
   /* Entrance when the section scrolls into view */
   useGSAP(
